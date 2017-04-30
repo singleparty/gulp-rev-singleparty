@@ -14,7 +14,7 @@ function revPath (pth, hash) {
     }
 
     return modifyFilename(pth, function (filename, ext) {
-        return filename + '-' + hash + ext;
+        return hash + '.' + filename + ext;
     });
 }
 
