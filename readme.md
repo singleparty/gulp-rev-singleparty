@@ -5,24 +5,15 @@
 修改位 [hash].[name].[ext]
 
 
-# gulp-rev [![Build Status](https://travis-ci.org/sindresorhus/gulp-rev.svg?branch=master)](https://travis-ci.org/sindresorhus/gulp-rev) [![Gitter](https://badges.gitter.im/join_chat.svg)](https://gitter.im/sindresorhus/gulp-rev)
+# gulp-rev-singleparty
 
 > Static asset revisioning by appending content hash to filenames
-> `unicorn.css` → `unicorn-d41d8cd98f.css`
-
-Make sure to set the files to [never expire](http://developer.yahoo.com/performance/rules.html#expires) for this to have an effect.
-
----
-
-<p align="center"><b>🔥 Want to strengthen your core JavaScript skills and master ES6?</b><br>I would personally recommend this awesome <a href="https://ES6.io/friend/AWESOME">ES6 course</a> by Wes Bos.</p>
-
----
-
+> `unicorn.css` → `d41d8cd98f.unicorn.css`
 
 ## Install
 
 ```
-$ npm install --save-dev gulp-rev
+$ npm install --save-dev gulp-rev-singleparty
 ```
 
 
@@ -30,7 +21,7 @@ $ npm install --save-dev gulp-rev
 
 ```js
 var gulp = require('gulp');
-var rev = require('gulp-rev');
+var rev = require('gulp-rev-singleparty');
 
 gulp.task('default', function () {
 	return gulp.src('src/*.css')
@@ -99,7 +90,7 @@ The hash of each rev'd file is stored at `file.revHash`. You can use this for cu
 
 ```js
 var gulp = require('gulp');
-var rev = require('gulp-rev');
+var rev = require('gulp-rev-singleparty');
 
 gulp.task('default', function () {
 	// by default, gulp would pick `assets/css` as the base,
@@ -117,8 +108,8 @@ An asset manifest, mapping the original paths to the revisioned paths, will be w
 
 ```json
 {
-	"css/unicorn.css": "css/unicorn-d41d8cd98f.css",
-	"js/unicorn.js": "js/unicorn-273c2cin3f.js"
+	"css/unicorn.css": "css/d41d8cd98f.unicorn.css",
+	"js/unicorn.js": "js/273c2cin3f.unicorn.js"
 }
 ```
 
@@ -126,7 +117,7 @@ By default, `rev-manifest.json` will be replaced as a whole. To merge with an ex
 
 ```js
 var gulp = require('gulp');
-var rev = require('gulp-rev');
+var rev = require('gulp-rev-singleparty');
 
 gulp.task('default', function () {
 	// by default, gulp would pick `assets/css` as the base,
@@ -175,7 +166,7 @@ var gulp = require('gulp');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var buffer = require('gulp-buffer');
-var rev = require('gulp-rev');
+var rev = require('gulp-rev-singleparty');
 
 gulp.task('default', function () {
 	return browserify('src/index.js')
@@ -186,23 +177,6 @@ gulp.task('default', function () {
 		.pipe(gulp.dest('dist'))
 });
 ```
-
-
-## Integration
-
-For more info on how to integrate **gulp-rev** into your app, have a look at the [integration guide](integration.md).
-
-
-## Works with gulp-rev
-
-- [gulp-rev-replace](https://github.com/jamesknelson/gulp-rev-replace) - Rewrite occurences of filenames which have been renamed
-- [gulp-rev-css-url](https://github.com/galkinrost/gulp-rev-css-url) - Override URLs in CSS files with the revved ones
-- [gulp-rev-outdated](https://github.com/shonny-ua/gulp-rev-outdated) - Old static asset revision files filter
-- [gulp-rev-collector](https://github.com/shonny-ua/gulp-rev-collector) - Static asset revision data collector
-- [rev-del](https://github.com/callumacrae/rev-del) - Delete old unused assets
-- [gulp-rev-delete-original](https://github.com/nib-health-funds/gulp-rev-delete-original) - Delete original files after rev
-- [gulp-rev-loader](https://github.com/adjavaherian/gulp-rev-loader) - Use rev-manifest with webpack
-- [gulp-rev-format](https://github.com/atamas101/gulp-rev-format) - Provide hash formatting options for static assets (prefix, suffix, last-extension)
 
 ## License
 
